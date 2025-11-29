@@ -5,7 +5,7 @@ Minimalist Telegram bot health monitoring via Pyrogram.
 ## How it works
 
 1. Reads bot list from SQLite database
-2. Sends `/start` and `/health` commands to each bot at configured intervals
+2. Sends `/start` (1 time at cold container start) and `/health` commands to each bot at configured intervals
 3. Pushes status to [Uptime Kuma](https://github.com/louislam/uptime-kuma) (optional)
 
 ## Setup
