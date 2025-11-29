@@ -1,0 +1,11 @@
+[project]
+name = "tgbot-heartbeat"
+version = "0.1.0"
+description = "Minimalist Telegram bot health monitoring"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiosqlite>=0.21.0",
+    "json-log-formatter>=1.1.1",
+    "pyrogram>=2.0.106",
+]

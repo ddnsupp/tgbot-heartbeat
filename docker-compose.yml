@@ -1,0 +1,21 @@
+services:
+  migrate:
+    image: ddnsupp/tgbot-heartbeat:latest
+    entrypoint: ["goose", "-dir", "migrations", "sqlite3", "/data/heartbeat.db", "up"]
+    volumes:
+      - heartbeat_data:/data
+
+  heartbeat:
+    image: ddnsupp/tgbot-heartbeat:latest
+    volumes:
+      - heartbeat_data:/data:ro
+    environment:
+      - DATABASE_PATH=/data/heartbeat.db
+      - TELEGRAM_SESSION_STRING=${TELEGRAM_SESSION_STRING}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  heartbeat_data:
